@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../Loading.css';
+
 function CardImage(props) {
+    const navigate = useNavigate();
 
     const { id } = useParams();
 
-    const urlCard = `https://api.magicthegathering.io/v1/cards/${id}`
+    const urlCard = `https://api.magicthegathering.io/v1/cards/${id}`;
 
     const [card, setCard] = useState([]);
 
@@ -16,16 +19,34 @@ function CardImage(props) {
 
     useEffect(() => {
         getData().then((data) => {
-            setCard(data.card)
+            setCard(data.card);
         });
-    }, []);
+    });
 
-    if(card.length != 0){
+    if (card.length === 0) {
+        return (
+            <div class="center">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+        );
+    } else {
         return (
             <div>
-            <img src={card.imageUrl} alt={card.name} />
+                <img className="artWork" src={card.imageUrl} alt={card.name} />
+                <button className="button2" onClick={() => navigate('/Deck')}>
+                    Go Back to Deck
+                </button>
             </div>
-            );
+        );
     }
 }
 

@@ -1,3 +1,5 @@
+body { background:#024772; padding:2em; }
+
 .App {
   text-align: center;
 }
@@ -29,65 +31,129 @@
 }
 
 .pageTitle{
-  font-size: 300%;
-  text-shadow: 2px 1px 1px;
+  color: rgb(13, 15, 78);
+  font-size: 400%;
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
   font-weight: bold;
   text-align: center;
 }
 
+.page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .rectangle{
-  background: rgb(2,0,36);
+  position:relative;
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(93,124,227,1) 59%, rgba(0,212,255,1) 100%); 
-  margin: 8%;
-  width:300px;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  width:350px;
   height:500px;
-  border:1px solid #000;
+  border:2px solid #000;
 }
 
 .imgParent{
   overflow: hidden;
   display: flex;
   align-items: center;
-  height: 200px;
+  height: 225px;
   justify-content: center;
   margin:0 5%;
   border: 1px solid black;
 }
 
 .image{
-  transform: scale(1.6) translateY(50px) ;
-  /* margin: 5%; */
-/*   
-  width: 75%;
-  height: 35%; 
-  object-fit: cover; */
+  transform: scale(1.7) translateY(51px) ;
+}
 
+.button{
+    position: absolute;
+    top: 101%;
+    background-color:#041757;
+    border: 2px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 110%;
+    padding: 4%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
 
+.button2{
+  position: relative;
+  top: 500px;
+  left: 45px;
+  background-color: #041757;
+  border: 2px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 110%;
+  padding: 1%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.button3{
+  position: relative;
+  margin: 1%;
+  background-color: #041757;
+  border: 2px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 110%;
+  padding: 1%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 
 .deck{
-  background: rgb(5, 4, 53);
   display:flex;
   flex-direction:row;
   flex-wrap: wrap;
 }
 
 .name{
-  margin: 5%;
+  white-space: nowrap;
+  margin-left: 5%;
   text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 38, 0), 0 0 0.2em rgb(0, 132, 255);
-  font-size: 175%; 
+  font-size: 150%; 
 }
 
 .title{
+  white-space: nowrap;
+  text-size-adjust: auto;
+  position:absolute;
+  top : 5%;
   margin: 5%;
   text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 38, 0), 0 0 0.2em rgb(0, 132, 255);
   font-size: 100%; 
   text-align: left;
 }
 
+.descriptionTitle{
+  position:relative;
+  margin: 3% 5%;
+  text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 38, 0), 0 0 0.2em rgb(0, 132, 255);
+  font-size: 115%; 
+  text-align: left;
+}
+
 .mana{
-  margin: 5%;
-  font-size: "30px";
+  margin-left:5%;
+  font-size: "35px";
   text-shadow: 1px 1px 1px;
   font-weight: bold;
 }
@@ -95,9 +161,17 @@
 
 
 .description{
-  margin: 5% 5%;
-  font-size: 100%; 
+  position:relative;
+  margin: 2% 5%;
+  font-size: 95%; 
   text-align: left;
+}
+
+.artWork{
+  position: absolute;
+  margin: auto;
+  width: 20%;
+  padding: 3%;
 }
 
 @keyframes App-logo-spin {
