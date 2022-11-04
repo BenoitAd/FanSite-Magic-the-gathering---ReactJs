@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function Deck(props) {
 
-    const urlCards = 'https://api.magicthegathering.io/v1/cards?colorIdentity=G,W,B&name=Legacy';
+    const urlCards = 'https://api.magicthegathering.io/v1/cards?supertypes=Legendary';
 
     const [deck, setDeck] = useState([]);
 
