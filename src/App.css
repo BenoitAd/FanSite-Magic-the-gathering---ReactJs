@@ -104,6 +104,8 @@ body { background:#024772; padding:2em; }
 }
 
 .button3{
+  width:25%;
+  height:30%;
   position: relative;
   margin: 1%;
   background-color: #041757;
@@ -143,6 +145,15 @@ body { background:#024772; padding:2em; }
   text-align: left;
 }
 
+.label{
+  width: 100%;
+  white-space: nowrap;
+  text-size-adjust: auto;
+  font-size: 125%; 
+  text-align: left;
+  font:bold;
+}
+
 .descriptionTitle{
   position:relative;
   margin: 3% 5%;
@@ -173,6 +184,23 @@ body { background:#024772; padding:2em; }
   width: 20%;
   padding: 3%;
 }
+
+.form{
+  padding: 1% 2% 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.border{
+  margin: 1%; 
+  border: solid;
+  border-color: #000;
+}
+
 
 @keyframes App-logo-spin {
   from {
