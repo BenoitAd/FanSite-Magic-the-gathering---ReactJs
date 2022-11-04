@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Deck(props) {
-    const urlCards = 'https://api.magicthegathering.io/v1/cards';
+
+    const urlCards = 'https://api.magicthegathering.io/v1/cards?colorIdentity=G,W,B&name=Legacy';
 
     const [deck, setDeck] = useState([]);
 
