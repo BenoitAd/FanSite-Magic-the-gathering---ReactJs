@@ -1,11 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import MyForm from '../composants/MyForm';
 
 function HomePage() {
-    
-    return (
-        <MyForm/>
-    );
+    return <MyForm />;
 }
 
 export default HomePage;

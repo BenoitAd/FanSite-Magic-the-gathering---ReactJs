@@ -3,14 +3,19 @@ import Multiselect from 'multiselect-react-dropdown';
 import axios from 'axios';
 
 function MyForm() {
-    const [urlValue, setUrl] = useState('');
+    const [urlValue, setUrl] = useState(
+        'https://api.magicthegathering.io/v1/cards'
+    );
     const [types, setTypes] = useState({
         types: [],
         supertypes: [],
         subtypes: [],
     });
 
-    const basicUrl = 'https://api.magicthegathering.io/v1/cards';
+    const [filters, setFilters] = useState({
+        name: '',
+        set: '',
+    });
 
     const urls = [
         'https://api.magicthegathering.io/v1/types',
@@ -26,6 +31,8 @@ function MyForm() {
 
     useEffect(() => {
         urls.map((url) => getData(url));
+        setFilters(filters);
+        // console.log(urlValue);
     }, []);
 
     let superT = types.supertypes.map((type) => {
@@ -71,19 +78,31 @@ function MyForm() {
 
     const handleChange = (e) => {
         if (e.target.id === 'name') {
-            console.log('name value :' + e.target.value);
+            const name = 'name=' + e.target.value;
+            setFilters({ ...filters, name: name });
         }
         if (e.target.id === 'set') {
-            console.log('set value :' + e.target.value);
+            const set = 'set=' + e.target.value;
+            setFilters({ ...filters, set: set });
         }
-
-        // setUrl({ value: e });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // console.log(event.target.value);
-    };
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        let filtersArray = Object.values(filters);
+
+        let url = urlValue;
+        filtersArray.forEach((chaine, indice) => {
+            if (indice === 0 && chaine !== '') {
+                url += '?' + chaine;
+            } else if (chaine !== '') {
+                url += '&' + chaine;
+            }
+        });
+
+        setUrl(url);
+    }
 
     function onSelect(selectedList, removedItem) {
         setUrl(selectedList);
