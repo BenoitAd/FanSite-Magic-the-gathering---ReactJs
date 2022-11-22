@@ -8,7 +8,11 @@ function CardImage(props) {
 
     const { id } = useParams();
 
-    const urlCard = `https://api.magicthegathering.io/v1/cards/${id}`;
+    const filter = id.split('+')[1];
+
+    const imageId = id.split('+')[0];
+
+    const urlCard = `https://api.magicthegathering.io/v1/cards/${imageId}`;
 
     const [card, setCard] = useState([]);
 
@@ -42,7 +46,10 @@ function CardImage(props) {
         return (
             <div>
                 <img className="artWork" src={card.imageUrl} alt={card.name} />
-                <button className="button2" onClick={() => navigate('/Deck')}>
+                <button
+                    className="button2"
+                    onClick={() => navigate(`/Deck/${filter}`)}
+                >
                     Go Back to Deck
                 </button>
             </div>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
     const navigate = useNavigate();
+    const filters = props.filters;
     return (
         <div className="rectangle">
             <h1 className="name">{props.name} </h1>
@@ -15,9 +16,9 @@ function Card(props) {
             <button
                 type="button"
                 className="button"
-                onClick={() => navigate(`/cardImage/${props.id}`)}
+                onClick={() => navigate(`/cardImage/${props.id}+${filters}`)}
             >
-                Card Artwork
+                Card Full Artwork
             </button>
         </div>
     );

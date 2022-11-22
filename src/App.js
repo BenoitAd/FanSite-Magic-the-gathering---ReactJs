@@ -9,7 +9,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/Deck" element={<Deck />} />
+                <Route path="/Deck/:filters" element={<Deck />} />
                 <Route path="/cardImage/:id" element={<CardImage />} />
             </Routes>
         </BrowserRouter>

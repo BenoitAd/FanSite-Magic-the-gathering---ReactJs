@@ -86,6 +86,26 @@ body { background:#024772; padding:2em; }
     cursor: pointer;
 }
 
+.button_deck_top{
+  position: absolute;
+  left:0%;
+  top:0%;
+  width: 10%;
+  height: 5%;
+  text-align: center;
+    background-color:#041757;
+    border: 2px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 110%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+
 .button2{
   position: absolute;
   top: 65%;
@@ -104,10 +124,10 @@ body { background:#024772; padding:2em; }
 }
 
 .button3{
-  width:25%;
+  width:100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   height:30%;
-  position: relative;
-  margin: 1%;
   background-color: #041757;
   border: 2px double #cccccc;
   color: #eeeeee;
@@ -149,7 +169,8 @@ body { background:#024772; padding:2em; }
   width: 100%;
   white-space: nowrap;
   text-size-adjust: auto;
-  font-size: 125%; 
+  font-size: 140%; 
+  color:#ffffff;
   text-align: left;
   font:bold;
 }

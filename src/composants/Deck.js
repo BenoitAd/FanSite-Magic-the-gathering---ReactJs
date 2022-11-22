@@ -1,12 +1,16 @@
 import Card from './Card';
 import '../App.css';
 import '../Loading.css';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function Deck(props) {
-    const urlCards =
-        'https://api.magicthegathering.io/v1/cards?supertypes=Legendary&colorIdentity=G';
+    const navigate = useNavigate();
+    const { filters } = useParams();
+
+    const urlCards = `https://api.magicthegathering.io/v1/cards/?${filters}`;
 
     const [deck, setDeck] = useState([]);
 
@@ -50,6 +54,15 @@ function Deck(props) {
         return (
             <>
                 <h1 className="pageTitle">Your Deck : </h1>
+
+                <button
+                    type="button"
+                    className="button_deck_top"
+                    onClick={() => navigate(`/`)}
+                >
+                    Go back to filters
+                </button>
+
                 <ul className="deck">
                     {deck.map((card) => (
                         <Card
@@ -58,6 +71,7 @@ function Deck(props) {
                             url={card.imageUrl}
                             text={card.originalText}
                             id={card.id}
+                            filters={filters}
                         />
                     ))}
                 </ul>
