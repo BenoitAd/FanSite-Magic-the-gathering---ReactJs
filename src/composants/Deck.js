@@ -9,12 +9,14 @@ import axios from 'axios';
 function Deck(props) {
     const navigate = useNavigate();
     const { filters } = useParams();
+    const [loading, setLoading] = useState(true);
 
     const urlCards = `https://api.magicthegathering.io/v1/cards/?${filters}`;
 
     const [deck, setDeck] = useState([]);
 
     const getData = async () => {
+        setLoading(true)
         const { data } = await axios.get(urlCards);
         return data;
     };
@@ -32,10 +34,11 @@ function Deck(props) {
                     );
                 })
             );
+            setLoading(false)
         });
     }, []);
 
-    if (deck.length === 0) {
+    if (loading) {
         return (
             <div class="center">
                 <div class="wave"></div>
@@ -50,7 +53,7 @@ function Deck(props) {
                 <div class="wave"></div>
             </div>
         );
-    } else {
+    } else if (deck.length > 0 && !loading){
         return (
             <>
                 <h1 className="pageTitle">Your Deck : </h1>
@@ -77,6 +80,18 @@ function Deck(props) {
                 </ul>
             </>
         );
+    } else {
+        return (
+            <>
+        <button
+        type="button"
+        className="button_deck_top"
+        onClick={() => navigate(`/`)}
+    >
+        Go back to filters
+    </button>
+    <h1 className='pageTitle'> This filters doesn't have any match in the database </h1>
+    </>)
     }
 }
 

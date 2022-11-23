@@ -116,6 +116,7 @@ function MyForm() {
             let chaine = type + '=';
             for (let i = 0; i < selectedList.length; i++) {
                 let champs = selectedList[i].name;
+                if(type === 'rarity' && champs === 'mythic rare') champs = 'mythic'
                 if (type === 'colorIdentity') {
                     switch (champs) {
                         case 'White':
@@ -142,6 +143,7 @@ function MyForm() {
                     chaine += champs;
                 }
             }
+
             switch (type) {
                 case 'subtypes':
                     setFilters({ ...filters, subtypes: chaine });
