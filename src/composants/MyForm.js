@@ -275,6 +275,7 @@ function MyForm() {
                         </button>
                     </form>
                 </div>
+                <button className='button_deck_top' onClick={() => navigate(`/`)}>Menu</button>
             </div>
         );
     }

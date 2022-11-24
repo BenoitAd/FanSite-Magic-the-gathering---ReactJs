@@ -86,7 +86,7 @@ function Deck(props) {
         <button
         type="button"
         className="button_deck_top"
-        onClick={() => navigate(`/`)}
+        onClick={() => navigate(`/MyForm`)}
     >
         Go back to filters
     </button>

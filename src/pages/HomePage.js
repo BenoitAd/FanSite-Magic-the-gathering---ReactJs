@@ -1,7 +1,8 @@
 import MyForm from '../composants/MyForm';
+import Menu from '../composants/Menu';
 
 function HomePage() {
-    return <MyForm />;
+    return <Menu />;
 }
 
 export default HomePage;
