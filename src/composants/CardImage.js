@@ -47,7 +47,7 @@ function CardImage(props) {
             <div>
                 <img className="artWork" src={card.imageUrl} alt={card.name} />
                 <button
-                    className="button2"
+                    className="button_deck_top"
                     onClick={() => navigate(`/Deck/${filter}`)}
                 >
                     Go Back to Deck

@@ -17,7 +17,8 @@ function Deck(props) {
 
     const getData = async () => {
         setLoading(true)
-        if(filters.length === 0) urlCards = `https://api.magicthegathering.io/v1/cards`;
+        if(filters === "!Filters") urlCards = `https://api.magicthegathering.io/v1/cards`;
+        console.log(urlCards)
         const { data } = await axios.get(urlCards);
         return data;
     };

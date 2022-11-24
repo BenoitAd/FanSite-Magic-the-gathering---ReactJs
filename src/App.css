@@ -86,12 +86,20 @@ body { background:#024772; padding:2em; }
     cursor: pointer;
 }
 
+.link{
+  color:rgb(133, 45, 160);
+}
+
+.link:hover{
+  color:rgb(142, 223, 224);
+}
+
 .button_deck_top{
   position: absolute;
   left:0%;
   top:0%;
   width: 10%;
-  height: 5%;
+  height: auto;
   text-align: center;
     background-color:#041757;
     border: 2px double #cccccc;
@@ -231,6 +239,10 @@ body { background:#024772; padding:2em; }
   margin: auto;
   width: 20%;
   padding: 3%;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 .form{

@@ -106,7 +106,7 @@ function MyForm() {
             }
         });
 
-        console.log(url);
+        if(url === '/Deck/') url='/Deck/!filters'
         navigate(url);
     };
 
