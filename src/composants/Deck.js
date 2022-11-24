@@ -11,12 +11,13 @@ function Deck(props) {
     const { filters } = useParams();
     const [loading, setLoading] = useState(true);
 
-    const urlCards = `https://api.magicthegathering.io/v1/cards/?${filters}`;
+    let urlCards = `https://api.magicthegathering.io/v1/cards/?${filters}`;
 
     const [deck, setDeck] = useState([]);
 
     const getData = async () => {
         setLoading(true)
+        if(filters.length === 0) urlCards = `https://api.magicthegathering.io/v1/cards`;
         const { data } = await axios.get(urlCards);
         return data;
     };
