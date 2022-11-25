@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-
+import CardImage from './CardImage';
+import React, { useState } from 'react';
 function Card(props) {
-    const navigate = useNavigate();
-    const filters = props.filters;
+    const [show,setIsShown] = useState(false);
+
     return (
         <div className="rectangle">
             <h1 className="name">{props.name} </h1>
@@ -15,10 +15,15 @@ function Card(props) {
             <button
                 type="button"
                 className="button"
-                onClick={() => navigate(`/cardImage/${props.id}+${filters}`)}
+                onClick={ () => setIsShown(true) }
             >
                 Card Full Artwork
             </button>
+            <CardImage 
+            onClose={() => setIsShown(false)} 
+            show={show} 
+            url={props.url} 
+            name={props.name} />
         </div>
     );
 }

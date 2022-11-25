@@ -107,7 +107,7 @@ function MyForm() {
             }
         });
 
-        if(url === '/Deck/') url='/Deck/!filters'
+        if(url === '/Deck/') url='/Deck/noFilters'
         navigate(url);
     };
 
@@ -177,7 +177,7 @@ function MyForm() {
         types.types.length === 0
     ) {
         return (
-            <div class="center">
+            <div className="center">
                 <div className="wave"></div>
                 <div className="wave"></div>
                 <div className="wave"></div>

@@ -16,7 +16,7 @@ function Deck(props) {
 
     const getData = async () => {
         setLoading(true)
-        if(filters === "!Filters") urlCards = `https://api.magicthegathering.io/v1/cards`;
+        if(filters === "noFilters") urlCards = `https://api.magicthegathering.io/v1/cards`;
         console.log(urlCards)
         const { data } = await axios.get(urlCards);
         return data;
@@ -69,7 +69,6 @@ function Deck(props) {
                             url={card.imageUrl}
                             text={card.originalText}
                             id={card.id}
-                            filters={filters}
                         />
                     ))}
                 </ul>

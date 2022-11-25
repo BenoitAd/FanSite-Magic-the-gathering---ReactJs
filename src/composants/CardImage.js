@@ -1,59 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
 
-function CardImage(props) {
-    const navigate = useNavigate();
-
-    const { id } = useParams();
-
-    const filter = id.split('+')[1];
-
-    const imageId = id.split('+')[0];
-
-    const urlCard = `https://api.magicthegathering.io/v1/cards/${imageId}`;
-
-    const [card, setCard] = useState([]);
-
-    const getData = async () => {
-        const { data } = await axios.get(urlCard);
-        return data;
-    };
-
-    useEffect(() => {
-        getData().then((data) => {
-            setCard(data.card);
-        });
-    });
-
-    if (card.length === 0) {
+function CardImage(props){
+    if (!props.show) {
+        return null;
+    }
         return (
-            <div class="center">
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-            </div>
-        );
-    } else {
-        return (
-            <div>
-                <img className="artWork" src={card.imageUrl} alt={card.name} />
-                <button
-                    className="button_deck_top"
-                    onClick={() => navigate(`/Deck/${filter}`)}
-                >
-                    Go Back to Deck
-                </button>
+            <div className='modal' onClick={props.onClose}>
+                <div className='modal-content' onClick={e => e.stopPropagation()}>
+                    <div className='modal-header'>
+                        <h4 className='modal-title'>Card artwork</h4>
+                    </div>
+                    <div className='modal-body'>
+                        <img src={props.url} alt={props.name} />
+                    </div>
+
+                    <div className='modal-footer'>
+                        <button className='modal-bouton' onClick={props.onClose}>Close</button>
+                    </div>
+                </div>
             </div>
         );
     }
-}
 
 export default CardImage;
