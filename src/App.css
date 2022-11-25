@@ -159,7 +159,8 @@ body { background:#024772; padding:2em; }
 }
 
 
-.button4{
+.buttonAcceuil{
+  margin-top: 40px;
   width:40%;
   background-color: #041757;
   border: 2px double #cccccc;
