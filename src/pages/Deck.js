@@ -1,6 +1,4 @@
-import Card from './Card';
-import '../App.css';
-import '../Loading.css';
+import Card from '../composants/Card';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

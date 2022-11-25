@@ -1,9 +1,11 @@
 import './App.css';
-import Deck from './composants/Deck';
+import './Responsive.css'
+import './Loading.css'
+import Deck from './pages/Deck';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CardImage from './composants/CardImage';
 import Menu from './pages/HomePage';
-import MyForm from './composants/MyForm';
+import MyForm from './pages/MyForm';
 import Information from './pages/Information'
 
 function App() {

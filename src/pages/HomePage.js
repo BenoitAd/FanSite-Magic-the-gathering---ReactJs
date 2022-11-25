@@ -1,4 +1,4 @@
-import Menu from '../composants/Menu';
+import Menu from './Menu';
 
 function HomePage() {
     return <Menu />;

@@ -48,9 +48,8 @@ body { background:#024772; padding:2em; }
 .rectangle{
   position:relative;
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(93,124,227,1) 59%, rgba(0,212,255,1) 100%); 
-  margin: auto;
   margin-top: 2%;
-  margin-bottom: 5%;
+  margin-bottom: 8%;
   width:350px;
   height:500px;
   border:2px solid #000;
@@ -71,6 +70,7 @@ body { background:#024772; padding:2em; }
 }
 
 .button{
+    padding:revert;
     position: absolute;
     top: 101%;
     background-color:#041757;
@@ -78,7 +78,6 @@ body { background:#024772; padding:2em; }
     color: #eeeeee;
     text-align: center;
     font-size: 110%;
-    padding: 4%;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -98,7 +97,8 @@ body { background:#024772; padding:2em; }
   position: absolute;
   left:0%;
   top:0%;
-  width: 10%;
+  min-width: max-content;
+  width: auto;
   height: auto;
   text-align: center;
     background-color:#041757;
@@ -237,7 +237,7 @@ body { background:#024772; padding:2em; }
 .artWork{
   position: absolute;
   margin: auto;
-  width: 20%;
+  width: auto;
   padding: 3%;
   top: 50%;
   left: 50%;
