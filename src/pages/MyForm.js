@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Multiselect from 'multiselect-react-dropdown';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../composants/Navbar';
 
 function MyForm() {
     const navigate = useNavigate();
@@ -191,92 +192,94 @@ function MyForm() {
         );
     } else {
         return (
-            <div>
-                <h1 className="pageTitle">Find your card</h1>
-                <div className="border">
-                    <form className="form" onSubmit={handleSubmit}>
-                        <label className="label">Filter by card name: </label>
-                        <input
-                            id="name"
-                            placeholder="name"
-                            type="text"
-                            onChange={(e) => handleChange(e)}
-                        />
+            <div className='navbar-container'>
+            <Navbar/>
+                <div>
+                    <h1 className="pageTitle">Find your cards</h1>
+                    <div className="border">
+                        <form className="form" onSubmit={handleSubmit}>
+                            <label className="label">Filter by card name: </label>
+                            <input
+                                id="name"
+                                placeholder="name"
+                                type="text"
+                                onChange={(e) => handleChange(e)}
+                            />
 
-                        <label className="label">Filter by set name: </label>
-                        <input
-                            id="set"
-                            placeholder="set"
-                            type="text"
-                            onChange={(e) => handleChange(e)}
-                        />
+                            <label className="label">Filter by set name: </label>
+                            <input
+                                id="set"
+                                placeholder="set"
+                                type="text"
+                                onChange={(e) => handleChange(e)}
+                            />
 
-                        <label className="label">
-                            Filter by SuperTypes: (many choices possibles)
-                        </label>
+                            <label className="label">
+                                Filter by SuperTypes: (many choices possibles)
+                            </label>
 
-                        <Multiselect
-                            options={optionsSuperTypes.options} // Options to display in the dropdown
-                            selectedValues={optionsSuperTypes.selectedValue} // Preselected value to persist in dropdown
-                            onSelect={onSelect} // Function will trigger on select event
-                            onRemove={onRemove} // Function will trigger on remove event
-                            displayValue="name"
-                        />
+                            <Multiselect
+                                options={optionsSuperTypes.options} // Options to display in the dropdown
+                                selectedValues={optionsSuperTypes.selectedValue} // Preselected value to persist in dropdown
+                                onSelect={onSelect} // Function will trigger on select event
+                                onRemove={onRemove} // Function will trigger on remove event
+                                displayValue="name"
+                            />
 
-                        <label className="label">
-                            Filter by Types: (many choices possibles)
-                        </label>
+                            <label className="label">
+                                Filter by Types: (many choices possibles)
+                            </label>
 
-                        <Multiselect
-                            options={optionsTypes.options} // Options to display in the dropdown
-                            selectedValues={optionsTypes.selectedValue} // Preselected value to persist in dropdown
-                            onSelect={onSelect} // Function will trigger on select event
-                            onRemove={onRemove} // Function will trigger on remove event
-                            displayValue="name"
-                        />
+                            <Multiselect
+                                options={optionsTypes.options} // Options to display in the dropdown
+                                selectedValues={optionsTypes.selectedValue} // Preselected value to persist in dropdown
+                                onSelect={onSelect} // Function will trigger on select event
+                                onRemove={onRemove} // Function will trigger on remove event
+                                displayValue="name"
+                            />
 
-                        <label className="label">
-                            Filter by SubTypes: (many choices possibles)
-                        </label>
+                            <label className="label">
+                                Filter by SubTypes: (many choices possibles)
+                            </label>
 
-                        <Multiselect
-                            options={optionsSubTypes.options} // Options to display in the dropdown
-                            selectedValues={optionsSubTypes.selectedValue} // Preselected value to persist in dropdown
-                            onSelect={onSelect} // Function will trigger on select event
-                            onRemove={onRemove} // Function will trigger on remove event
-                            displayValue="name"
-                        />
+                            <Multiselect
+                                options={optionsSubTypes.options} // Options to display in the dropdown
+                                selectedValues={optionsSubTypes.selectedValue} // Preselected value to persist in dropdown
+                                onSelect={onSelect} // Function will trigger on select event
+                                onRemove={onRemove} // Function will trigger on remove event
+                                displayValue="name"
+                            />
 
-                        <label className="label">
-                            Filter by Colors : (many choices possibles)
-                        </label>
+                            <label className="label">
+                                Filter by Colors : (many choices possibles)
+                            </label>
 
-                        <Multiselect
-                            options={optionsColors.options} // Options to display in the dropdown
-                            selectedValues={optionsColors.selectedValue} // Preselected value to persist in dropdown
-                            onSelect={onSelect} // Function will trigger on select event
-                            onRemove={onRemove} // Function will trigger on remove event
-                            displayValue="name"
-                        />
+                            <Multiselect
+                                options={optionsColors.options} // Options to display in the dropdown
+                                selectedValues={optionsColors.selectedValue} // Preselected value to persist in dropdown
+                                onSelect={onSelect} // Function will trigger on select event
+                                onRemove={onRemove} // Function will trigger on remove event
+                                displayValue="name"
+                            />
 
-                        <label className="label">Filter by Rarity : </label>
+                            <label className="label">Filter by Rarity : </label>
 
-                        <Multiselect
-                            options={OptionsRarity.options} // Options to display in the dropdown
-                            selectedValues={OptionsRarity.selectedValue} // Preselected value to persist in dropdown
-                            onSelect={onSelect} // Function will trigger on select event
-                            onRemove={onRemove} // Function will trigger on remove event
-                            displayValue="name"
-                            selectionLimit="1"
-                        />
+                            <Multiselect
+                                options={OptionsRarity.options} // Options to display in the dropdown
+                                selectedValues={OptionsRarity.selectedValue} // Preselected value to persist in dropdown
+                                onSelect={onSelect} // Function will trigger on select event
+                                onRemove={onRemove} // Function will trigger on remove event
+                                displayValue="name"
+                                selectionLimit="1"
+                            />
 
-                        <button className="button3" type="submit">
-                            Filter
-                        </button>
-                    </form>
+                            <button className="button3" type="submit">
+                                Filter
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <button className='button_deck_top' onClick={() => navigate(`/`)}>Menu</button>
-            </div>
+            </div>    
         );
     }
 }

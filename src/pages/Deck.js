@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../composants/Navbar';
 
 function Deck(props) {
     const navigate = useNavigate();
@@ -56,15 +57,9 @@ function Deck(props) {
     } else if (deck.length > 0 && !loading){
         return (
             <>
-                <h1 className="pageTitle">Your Deck : </h1>
-
-                <button
-                    type="button"
-                    className="button_deck_top"
-                    onClick={() => navigate(`/`)}
-                >
-                    Go back to filters
-                </button>
+            <div className='navbar-container'>
+                <Navbar/>
+                <h1 className="pageTitle">Filter Result : </h1>
 
                 <ul className="deck">
                     {deck.map((card) => (
@@ -78,6 +73,7 @@ function Deck(props) {
                         />
                     ))}
                 </ul>
+            </div>
             </>
         );
     } else {
