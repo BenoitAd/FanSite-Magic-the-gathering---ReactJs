@@ -1,5 +1,4 @@
 import './App.css';
-import './Responsive.css'
 import './Loading.css'
 import Deck from './pages/Deck';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
