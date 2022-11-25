@@ -301,8 +301,11 @@ body { background:#024772; padding:2em; }
 }
 
 .nav li.active {
-  background-color: #555;
+  background-color: rgb(80, 78, 78);
+  pointer-events: none;
+  cursor:default;
 }
+
 
 .nav li:hover {
   background-color: #777;
