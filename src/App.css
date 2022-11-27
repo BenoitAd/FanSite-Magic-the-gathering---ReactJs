@@ -103,7 +103,7 @@ body { background:#024772; padding:2em; }
   width: auto;
   height: auto;
   text-align: center;
-    background-color:#041757;
+    background-color:rgb(4 0 70); 
     border: 2px double #cccccc;
     color: #eeeeee;
     text-align: center;
@@ -115,12 +115,30 @@ body { background:#024772; padding:2em; }
     cursor: pointer;
 }
 
-
+.buttonAdd{
+    padding: revert;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #041757;
+    border: 2px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    width: 40px;
+    max-width: 40px;
+    height: 25px;
+    max-height: 25px;
+    transition: all 0.5s;
+    cursor: pointer;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 10px 10px 25px #1f47908b;
+}
 .button2{
   position: absolute;
   top: 65%;
   left: 3%;
-  background-color: #041757;
+  background-color: rgb(4 0 70);
   border: 2px double #cccccc;
   color: #eeeeee;
   text-align: center;
@@ -138,7 +156,7 @@ body { background:#024772; padding:2em; }
   margin-top: 2%;
   margin-bottom: 2%;
   height:30%;
-  background-color: #041757;
+  background-color: rgb(4 0 70);
   border: 2px double #cccccc;
   color: #eeeeee;
   text-align: center;
@@ -274,7 +292,7 @@ body { background:#024772; padding:2em; }
 }
 
 .nav{
-  background-color:rgb(13, 15, 78);
+  background-color:rgb(4 0 70);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -301,7 +319,7 @@ body { background:#024772; padding:2em; }
 }
 
 .nav li.active {
-  background-color: rgb(80, 78, 78);
+  background-color: rgb(122, 116, 116);
   pointer-events: none;
   cursor:default;
 }
@@ -328,21 +346,24 @@ body { background:#024772; padding:2em; }
 .modal-content {
   width: 500px;
   height: auto;
-  background-color: #fff;
+  background-color:#024772;
 }
 
 .modal-header, .modal-footer{
+  background-color:#024772;
  padding: 10px;
 }
 
 .modal-title {
   margin: 0;
+  font-size: large;
 }
 
 .modal-body {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  border-color: #000;
   display:flex;
   justify-content: center;
 }

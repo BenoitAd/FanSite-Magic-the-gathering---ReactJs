@@ -15,9 +15,10 @@ function Deck(props) {
     const [deck, setDeck] = useState([]);
 
     const getData = async () => {
-        setLoading(true)
-        if(filters === "noFilters") urlCards = `https://api.magicthegathering.io/v1/cards`;
-        console.log(urlCards)
+        setLoading(true);
+        if (filters === 'noFilters')
+            urlCards = `https://api.magicthegathering.io/v1/cards`;
+        console.log(urlCards);
         const { data } = await axios.get(urlCards);
         return data;
     };
@@ -35,58 +36,62 @@ function Deck(props) {
                     );
                 })
             );
-            setLoading(false)
+            setLoading(false);
         });
     }, []);
 
     if (loading) {
         return (
-            <div class="center">
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
+            <div className="center">
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
+                <div className="wave"></div>
             </div>
         );
-    } else if (deck.length > 0 && !loading){
+    } else if (deck.length > 0 && !loading) {
         return (
             <>
-            <div className='navbar-container'>
-                <Navbar/>
-                <h1 className="pageTitle">Filter Result : </h1>
+                <div className="navbar-container">
+                    <Navbar />
+                    <h1 className="pageTitle">Filter Result : </h1>
 
-                <ul className="deck">
-                    {deck.map((card) => (
-                        <Card
-                            name={card.name}
-                            manaCost={card.manaCost}
-                            url={card.imageUrl}
-                            text={card.originalText}
-                            id={card.id}
-                        />
-                    ))}
-                </ul>
-            </div>
+                    <ul className="deck">
+                        {deck.map((card) => (
+                            <Card
+                                name={card.name}
+                                manaCost={card.manaCost}
+                                url={card.imageUrl}
+                                text={card.originalText}
+                                id={card.id}
+                            />
+                        ))}
+                    </ul>
+                </div>
             </>
         );
     } else {
         return (
             <>
-        <button
-        type="button"
-        className="button_deck_top"
-        onClick={() => navigate(`/MyForm`)}
-    >
-        Go back to filters
-    </button>
-    <h1 className='pageTitle'> This filters doesn't have any match in the database </h1>
-    </>)
+                <button
+                    type="button"
+                    className="button_deck_top"
+                    onClick={() => navigate(`/MyForm`)}
+                >
+                    Go back to filters
+                </button>
+                <h1 className="pageTitle">
+                    {' '}
+                    This filters doesn't have any match in the database{' '}
+                </h1>
+            </>
+        );
     }
 }
 

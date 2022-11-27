@@ -1,11 +1,19 @@
 import CardImage from './CardImage';
 import React, { useState } from 'react';
 function Card(props) {
-    const [show,setIsShown] = useState(false);
+    const [show, setIsShown] = useState(false);
 
     return (
         <div className="rectangle">
             <h1 className="name">{props.name} </h1>
+            <button
+                id="deck"
+                type="button"
+                className="buttonAdd"
+                onClick={deckButton}
+            >
+                +
+            </button>
             <p className="mana"> ManaCost : {props.manaCost} </p>
             <div className="imgParent">
                 <img className="image" src={props.url} alt={props.name}></img>
@@ -15,17 +23,24 @@ function Card(props) {
             <button
                 type="button"
                 className="button"
-                onClick={ () => setIsShown(true) }
+                onClick={() => setIsShown(true)}
             >
                 Card Full Artwork
             </button>
-            <CardImage 
-            onClose={() => setIsShown(false)} 
-            show={show} 
-            url={props.url} 
-            name={props.name} />
+            <CardImage
+                onClose={() => setIsShown(false)}
+                show={show}
+                url={props.url}
+                name={props.name}
+            />
         </div>
     );
+}
+
+function deckButton(event) {
+    event.target.textContent === '+'
+        ? (event.target.textContent = '✓')
+        : (event.target.textContent = '+');
 }
 
 export default Card;
