@@ -18,7 +18,6 @@ function Deck(props) {
         setLoading(true);
         if (filters === 'noFilters')
             urlCards = `https://api.magicthegathering.io/v1/cards`;
-        console.log(urlCards);
         const { data } = await axios.get(urlCards);
         return data;
     };
@@ -63,14 +62,16 @@ function Deck(props) {
                     <h1 className="pageTitle">Filter Result : </h1>
 
                     <ul className="deck">
-                        {deck.map((card) => (
-                            <Card
-                                name={card.name}
-                                manaCost={card.manaCost}
-                                url={card.imageUrl}
-                                text={card.originalText}
-                                id={card.id}
-                            />
+                        {deck.map((card, myKey) => (
+                            <React.Fragment key={myKey}>
+                                <Card
+                                    name={card.name}
+                                    manaCost={card.manaCost}
+                                    url={card.imageUrl}
+                                    text={card.originalText}
+                                    id={card.id}
+                                />
+                            </React.Fragment>
                         ))}
                     </ul>
                 </div>

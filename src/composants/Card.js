@@ -5,7 +5,7 @@ function Card(props) {
 
     return (
         <div className="rectangle">
-            <h1 className="name">{props.name} </h1>
+            <h1 className="name">{props.key} </h1>
             <button
                 id="deck"
                 type="button"
