@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@reduxjs/toolkit': ^1.9.0
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
@@ -15,6 +16,7 @@ specifiers:
   web-vitals: ^2.1.4
 
 dependencies:
+  '@reduxjs/toolkit': 1.9.0_k4ae6lp43ej6mezo3ztvx6pykq
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
@@ -2001,6 +2003,25 @@ packages:
       source-map: 0.7.4
       webpack: 5.75.0
       webpack-dev-server: 4.11.1_webpack@5.75.0
+    dev: false
+
+  /@reduxjs/toolkit/1.9.0_k4ae6lp43ej6mezo3ztvx6pykq:
+    resolution: {integrity: sha512-ak11IrjYcUXRqlhNPwnz6AcvA2ynJTu8PzDbbqQw4a3xR4KZtgiqbNblQD+10CRbfK4+5C79SOyxnT9dhBqFnA==}
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18
+      react-redux: ^7.2.1 || ^8.0.2
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      immer: 9.0.16
+      react: 18.2.0
+      react-redux: 8.0.5_biqbaboplfbrettd7655fr4n2y
+      redux: 4.2.0
+      redux-thunk: 2.4.2_redux@4.2.0
+      reselect: 4.1.7
     dev: false
 
   /@remix-run/router/1.0.3:
@@ -8528,6 +8549,20 @@ packages:
       strip-indent: 3.0.0
     dev: false
 
+  /redux-thunk/2.4.2_redux@4.2.0:
+    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 4.2.0
+    dev: false
+
+  /redux/4.2.0:
+    resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
+    dependencies:
+      '@babel/runtime': 7.20.1
+    dev: false
+
   /regenerate-unicode-properties/10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
     engines: {node: '>=4'}
@@ -8617,6 +8652,10 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /reselect/4.1.7:
+    resolution: {integrity: sha512-Zu1xbUt3/OPwsXL46hvOOoQrap2azE7ZQbokq61BQfiXvhewsKDwhMeZjTX9sX0nvw1t/U5Audyn1I9P/m9z0A==}
     dev: false
 
   /resolve-cwd/3.0.0:
