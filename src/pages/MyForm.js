@@ -107,7 +107,7 @@ function MyForm() {
             }
         });
 
-        if(url === '/Deck/') url='/Deck/noFilters'
+        if (url === '/Deck/') url = '/Deck/noFilters';
         navigate(url);
     };
 
@@ -117,7 +117,8 @@ function MyForm() {
             let chaine = type + '=';
             for (let i = 0; i < selectedList.length; i++) {
                 let champs = selectedList[i].name;
-                if(type === 'rarity' && champs === 'mythic rare') champs = 'mythic'
+                if (type === 'rarity' && champs === 'mythic rare')
+                    champs = 'mythic';
                 if (type === 'colorIdentity') {
                     switch (champs) {
                         case 'White':
@@ -192,13 +193,15 @@ function MyForm() {
         );
     } else {
         return (
-            <div className='navbar-container'>
-            <Navbar/>
+            <div className="navbar-container">
+                <Navbar />
                 <div>
                     <h1 className="pageTitle">Find your cards</h1>
                     <div className="border">
                         <form className="form" onSubmit={handleSubmit}>
-                            <label className="label">Filter by card name: </label>
+                            <label className="label">
+                                Filter by card name:{' '}
+                            </label>
                             <input
                                 id="name"
                                 placeholder="name"
@@ -206,7 +209,9 @@ function MyForm() {
                                 onChange={(e) => handleChange(e)}
                             />
 
-                            <label className="label">Filter by set name: </label>
+                            <label className="label">
+                                Filter by set name:{' '}
+                            </label>
                             <input
                                 id="set"
                                 placeholder="set"
@@ -279,7 +284,7 @@ function MyForm() {
                         </form>
                     </div>
                 </div>
-            </div>    
+            </div>
         );
     }
 }

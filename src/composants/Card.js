@@ -3,6 +3,16 @@ import React, { useState } from 'react';
 function Card(props) {
     const [show, setIsShown] = useState(false);
 
+    function deckButton(event) {
+        if (event.target.textContent === '+') {
+            event.target.textContent = '✓';
+            props.addCard(event.target);
+        } else {
+            event.target.textContent = '+';
+            props.removeCard(event.target.id);
+        }
+    }
+
     return (
         <div className="rectangle">
             <h1 className="name">{props.name} </h1>
@@ -35,12 +45,6 @@ function Card(props) {
             />
         </div>
     );
-}
-
-function deckButton(event) {
-    event.target.textContent === '+'
-        ? (event.target.textContent = '✓')
-        : (event.target.textContent = '+');
 }
 
 export default Card;
