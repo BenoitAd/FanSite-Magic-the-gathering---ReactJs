@@ -18,7 +18,6 @@ function Card(props) {
 
 
     function deckButton(event) {
-        console.log(event.target)
         if (!isChecked) {
             setIsChecked(true);
             setAddButton('✓');
