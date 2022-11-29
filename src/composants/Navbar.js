@@ -6,6 +6,7 @@ export default function Navbar(){
         <ul>
             <CustomLink to="/Information">About Page</CustomLink>
             <CustomLink to="/MyForm">Find a card</CustomLink>
+            <CustomLink to="/UserDeck">Your Deck</CustomLink>
         </ul>
     </nav>
 }

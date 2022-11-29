@@ -1,15 +1,42 @@
 import CardImage from './CardImage';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCard, removeCard } from '../store/Redux'
+
 function Card(props) {
     const [show, setIsShown] = useState(false);
+    const [isChecked, setIsChecked] = useState(props.isChecked);
+    const [addButton,setAddButton] = useState("+");
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(isChecked){
+            setAddButton('✓');
+        }
+     });
+
 
     function deckButton(event) {
-        if (event.target.textContent === '+') {
-            event.target.textContent = '✓';
-            props.addCard(event.target);
+        console.log(event.target)
+        if (!isChecked) {
+            setIsChecked(true);
+            setAddButton('✓');
+            dispatch(
+                addCard({id:props.id, name:props.name, manaCost:props.manaCost, url:props.url, text:props.text, isChecked:true})
+            );
         } else {
-            event.target.textContent = '+';
-            props.removeCard(event.target.id);
+            if(event.target.baseURI.includes("UserDeck")){
+                dispatch(
+                    removeCard(props.id)
+                );
+            } else {
+                setIsChecked(false);
+                setAddButton('+');
+                dispatch(
+                    removeCard(props.id)
+                );
+            }
         }
     }
 
@@ -22,7 +49,7 @@ function Card(props) {
                 className="buttonAdd"
                 onClick={deckButton}
             >
-                +
+                {addButton}
             </button>
             <p className="mana"> ManaCost : {props.manaCost} </p>
             <div className="imgParent">

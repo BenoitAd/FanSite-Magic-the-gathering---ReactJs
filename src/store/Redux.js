@@ -6,16 +6,21 @@ const userDeckSlice = createSlice({
     initialState: [],
     reducers: {
         addCard: (state, action) => {
-            if (!state.includes(action.payload)) state.push(action.payload);
+            if (!state.includes(action.payload.id)){
+                state.push(action.payload);
+            } 
         },
         removeCard: (state, action) => {
-            state = state.filter((it) => it !== action.payload);
+            state = state.filter((it) => it.id !== action.payload);
+            return state;
         },
     },
 });
 
+export const { addCard, removeCard } = userDeckSlice.actions;
+
 export const store = configureStore({
     reducer: {
-        userDeckSlice: userDeckSlice.reducer,
+        UserDeck: userDeckSlice.reducer,
     },
 });

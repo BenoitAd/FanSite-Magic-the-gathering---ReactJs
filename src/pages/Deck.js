@@ -70,6 +70,7 @@ function Deck(props) {
                                     url={card.imageUrl}
                                     text={card.originalText}
                                     id={card.id}
+                                    isChecked={false}
                                 />
                             </React.Fragment>
                         ))}
