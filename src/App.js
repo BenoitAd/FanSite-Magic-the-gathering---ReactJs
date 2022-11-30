@@ -18,7 +18,7 @@ function App() {
                 <Route path="/" element={<Menu />} />
                 <Route path="/Information" element={<Information />} />
                 <Route path="/MyForm" element={<MyForm />}></Route>
-                <Route path="/Deck/:filters" element={<Deck />} />
+                <Route path="/Deck" element={<Deck />} />
                 <Route path="/cardImage/:id" element={<CardImage />} />
                 <Route path="/userDeck" element={<UserDeck />} />
             </Routes>

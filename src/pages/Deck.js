@@ -1,23 +1,23 @@
 import Card from '../composants/Card';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Navbar from '../composants/Navbar';
 
 function Deck(props) {
     const navigate = useNavigate();
-    const { filters } = useParams();
     const [loading, setLoading] = useState(true);
 
-    let urlCards = `https://api.magicthegathering.io/v1/cards/?${filters}`;
+    const filters = useSelector((state) => state.filters)[0];
+
+    let urlCards = `https://api.magicthegathering.io/v1/cards/${filters}`;
+    console.log(urlCards)
 
     const [deck, setDeck] = useState([]);
 
     const getData = async () => {
         setLoading(true);
-        if (filters === 'noFilters')
-            urlCards = `https://api.magicthegathering.io/v1/cards`;
         const { data } = await axios.get(urlCards);
         return data;
     };

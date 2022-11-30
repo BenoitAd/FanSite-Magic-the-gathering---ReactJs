@@ -1,27 +1,33 @@
 import CardImage from './CardImage';
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCard, removeCard } from '../store/Redux'
 
 function Card(props) {
     const [show, setIsShown] = useState(false);
     const [isChecked, setIsChecked] = useState(props.isChecked);
-    const [addButton,setAddButton] = useState("+");
+    const [addButton,setAddButton] = useState("");
 
     const dispatch = useDispatch();
 
+    const userDeckState = useSelector((state) => state.UserDeck);
+
     useEffect(() => {
-        if(isChecked){
+        let includeId = userDeckState.find((card)=>card.id === props.id)
+        if(includeId) {
+            setIsChecked(true);
+        }
+        if(!!isChecked){
             setAddButton('✓');
+        } else {
+            setAddButton('+')
         }
      });
 
 
     function deckButton(event) {
-        console.log(event.target)
         if (!isChecked) {
             setIsChecked(true);
-            setAddButton('✓');
             dispatch(
                 addCard({id:props.id, name:props.name, manaCost:props.manaCost, url:props.url, text:props.text, isChecked:true})
             );
@@ -30,9 +36,8 @@ function Card(props) {
                 dispatch(
                     removeCard(props.id)
                 );
-            } else {
+            } else { // evite bug de synchronicité
                 setIsChecked(false);
-                setAddButton('+');
                 dispatch(
                     removeCard(props.id)
                 );

@@ -3,6 +3,8 @@ import Multiselect from 'multiselect-react-dropdown';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../composants/Navbar';
+import { useDispatch } from 'react-redux';
+import { addFilter } from '../store/Redux';
 
 function MyForm() {
     const navigate = useNavigate();
@@ -11,6 +13,8 @@ function MyForm() {
         supertypes: [],
         subtypes: [],
     });
+
+    const dispatch = useDispatch();
 
     const [filters, setFilters] = useState({
         name: '',
@@ -95,20 +99,22 @@ function MyForm() {
 
         let filtersArray = Object.values(filters);
 
-        let url = '/Deck/';
+        let url = '?';
 
         filtersArray.forEach((chaine) => {
             if (chaine.length > 0) {
-                if (url === '/Deck/') {
+                if (url === '?') {
                     url += chaine;
                 } else {
                     url += '&' + chaine;
                 }
             }
         });
-
-        if (url === '/Deck/') url = '/Deck/noFilters';
-        navigate(url);
+        if (url === "?") url = "" // si il n'y a pas de filtre
+        dispatch(
+            addFilter(url)
+        );
+        navigate("/Deck");
     };
 
     function onSelect(selectedList, removedItem) {

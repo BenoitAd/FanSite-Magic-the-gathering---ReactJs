@@ -19,8 +19,22 @@ const userDeckSlice = createSlice({
 
 export const { addCard, removeCard } = userDeckSlice.actions;
 
+const filterResult = createSlice({
+    name: 'filters',
+    initialState: [""],
+    reducers: {
+        addFilter: (state, action) => {
+            state[0]=action.payload
+        },
+    },
+});
+
+export const { addFilter } = filterResult.actions;
+
 export const store = configureStore({
     reducer: {
         UserDeck: userDeckSlice.reducer,
+        filters: filterResult.reducer,
     },
 });
+
