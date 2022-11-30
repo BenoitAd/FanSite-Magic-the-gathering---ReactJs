@@ -5,7 +5,7 @@ export default function Navbar(){
     <Link to="/" className="site-title">Magic Fan Site</Link>
         <ul>
             <CustomLink to="/Information">About Page</CustomLink>
-            <CustomLink to="/MyForm">Find cards</CustomLink>
+            <CustomLink to="/MyForm">Filter cards</CustomLink>
             <CustomLink to="/UserDeck">Your Deck</CustomLink>
         </ul>
     </nav>
