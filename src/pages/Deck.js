@@ -90,7 +90,8 @@ function Deck(props) {
                 </button>
                 <h1 className="pageTitle">
                     {' '}
-                    This filters doesn't have any match in the database{' '}
+                    This filters doesn't have any match in the database
+                    {' '}
                 </h1>
             </>
         );

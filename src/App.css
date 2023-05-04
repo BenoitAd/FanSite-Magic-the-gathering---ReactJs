@@ -227,6 +227,7 @@ body { background:#024772; padding:2em; }
   color:#ffffff;
   text-align: left;
   font:bold;
+  font-size: x-large;
 }
 
 .descriptionTitle{
@@ -267,8 +268,8 @@ body { background:#024772; padding:2em; }
 }
 
 .form{
-  padding: 1% 2% 0;
-  width: 100%;
+  padding: 2% 2% 0;
+  width: 50%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -368,6 +369,11 @@ body { background:#024772; padding:2em; }
   justify-content: center;
 }
 
+.formWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @keyframes App-logo-spin {
   from {

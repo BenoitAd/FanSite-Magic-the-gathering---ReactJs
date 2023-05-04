@@ -3,8 +3,8 @@ import Multiselect from 'multiselect-react-dropdown';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../composants/Navbar';
-import { useDispatch } from 'react-redux';
-import { addFilter } from '../store/Redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFilter, addSubTypes } from '../store/Redux';
 
 function MyForm() {
     const navigate = useNavigate();
@@ -15,6 +15,23 @@ function MyForm() {
     });
 
     const dispatch = useDispatch();
+
+    // récupérer la liste des superTypes
+    useSelector(state => state.typesFilter.superTypes).map( (value) => {
+        setTypes((lastType) => ({ ...lastType, supertypes: value }));
+    } )
+
+    // récupérer la liste des subTypes
+    useSelector(state => state.typesFilter.subTypes).map( (value) => {
+        setTypes((lastType) => ({ ...lastType, subtypes: value }));
+    })
+
+    // récupérer la liste des types
+    useSelector(state => state.typesFilter.types).map( (value) => {
+        setTypes((lastType) => ({ ...lastType, types: value }));
+    })
+
+
 
     const [filters, setFilters] = useState({
         name: '',
@@ -33,14 +50,41 @@ function MyForm() {
     ];
 
     const getData = async (myUrl) => {
-        const { data } = await axios.get(myUrl);
+        const data = await fetchDataWithRetry(myUrl);
+        switch(myUrl)
+            case "https://api.magicthegathering.io/v1/types":
+                dispatch()
+                break;
+            
         const key = Object.keys(data)[0];
         setTypes((lastType) => ({ ...lastType, [key]: data[key] }));
     };
 
+    async function fetchDataWithRetry(url, maxRetries = 5, retryDelay = 1000) {
+        try {
+          const response = await axios.get(url);
+          if (response.status === 200) {
+            return response.data;
+          }
+        } catch (error) {
+          if (maxRetries > 0) {
+            // Wait for a short delay before retrying
+            await new Promise((resolve) => setTimeout(resolve, retryDelay));
+            // Recursively call this function with reduced maxRetries
+            return await fetchDataWithRetry(url, maxRetries - 1, retryDelay);
+          }
+          // Rethrow the error if we've exceeded the maximum number of retries
+          throw error;
+        }
+        // Return null if we didn't get a 200 response and maxRetries is zero
+        return null;
+      }
+
     useEffect(() => {
-        urls.map((url) => getData(url));
-    }, []);
+        if (!types.subtypes.length || !types.supertypes.length || types.types.length) {
+            urls.forEach(getData);
+        }
+      }, []);
 
     let superT = types.supertypes.map((type) => {
         return { name: type, id: 'supertypes' };
@@ -178,11 +222,7 @@ function MyForm() {
         return;
     }
 
-    if (
-        types.subtypes.length === 0 ||
-        types.supertypes.length === 0 ||
-        types.types.length === 0
-    ) {
+    if (!types.subtypes.length || !types.supertypes.length || !types.types.length) {
         return (
             <div className="center">
                 <div className="wave"></div>
@@ -203,7 +243,7 @@ function MyForm() {
                 <Navbar />
                 <div>
                     <h1 className="pageTitle">Find your cards</h1>
-                    <div className="border">
+                    <div className='formWrapper'>
                         <form className="form" onSubmit={handleSubmit}>
                             <label className="label">
                                 Filter by card name:{' '}

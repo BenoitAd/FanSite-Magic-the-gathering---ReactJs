@@ -2,12 +2,16 @@
 
 ![site exemple](assets/siteReact.png)
 
-# Description
+## Description
 
 Ce projet a été réalisé dans le cadre de l'unité d'enseignement " Technologie Web côté client".
 Il a pour but de nous familiariser avec le framework React.
 
 ## Installation 
+
+### Importer les librairies
+
+### `npm install`
 
 ### Lancer le projet
 
@@ -19,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### build et run le projet 
+### build le projet 
 
 ### `npm run build`
 
@@ -31,7 +35,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Deploiement 
+## Deploiement 
 
 ### Deployé sur le site Netlify : *https://magic-fan-site.netlify.app*
 

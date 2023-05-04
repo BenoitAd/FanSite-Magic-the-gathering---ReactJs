@@ -31,10 +31,34 @@ const filterResult = createSlice({
 
 export const { addFilter } = filterResult.actions;
 
+const typesFilter = createSlice({
+    name: 'typesFilter',
+    initialState: {
+        superTypes: [],
+        subTypes: [],
+        types: []
+    },
+    reducers: {
+        addSuperTypes: (state,action) => {
+            state[0]=action.payload
+        },
+        addSubTypes: (state,action) => {
+            state[0]=action.payload
+        },
+        addTypes: (state,action) => {
+            state[0]=action.payload
+        }
+    },
+});
+
+export const { addSuperTypes, addSubTypes, addTypes } = typesFilter.actions;
+
+
 export const store = configureStore({
     reducer: {
         UserDeck: userDeckSlice.reducer,
         filters: filterResult.reducer,
+        typesFilter: typesFilter.reducer
     },
 });
 
