@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-## build et run le projet 
+### build et run le projet 
 
 ### `npm run build`
 
@@ -31,5 +31,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Deploiement 
 
-## Deployé sur le site Netlify : *https://magic-fan-site.netlify.app*
+### Deployé sur le site Netlify : *https://magic-fan-site.netlify.app*
 
