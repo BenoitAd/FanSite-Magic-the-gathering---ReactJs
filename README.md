@@ -1,5 +1,7 @@
 # Projet React - IUT Nantes
 
+![site exemple](assets/siteReact.png)
+
 # Description
 
 Ce projet a été réalisé dans le cadre de l'unité d'enseignement " Technologie Web côté client".
