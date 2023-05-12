@@ -15,9 +15,9 @@ Il a pour but de nous familiariser avec le framework React.
 
 ## Apercu :
 
-![page Deck](assets/pageDeck.PNG)
-
 ![page Cards](assets/pageCards.PNG)
+
+![page Deck](assets/pageDeck.PNG)
 
 ## Installation
 
