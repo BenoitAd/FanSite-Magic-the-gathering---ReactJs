@@ -15,11 +15,9 @@ Il a pour but de nous familiariser avec le framework React.
 
 ## Apercu :
 
-![page d'acceuil](assets/siteReact.png)
-
 ![page Deck](assets/pageDeck.PNG)
 
-![page Cards](assets/pageCards.png)
+![page Cards](assets/pageCards.PNG)
 
 ## Installation
 
