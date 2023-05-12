@@ -4,7 +4,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../composants/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFilter, addSubTypes } from '../store/Redux';
+import {
+    addFilter,
+    addSubTypes,
+    addTypes,
+    addSuperTypes,
+} from '../store/Redux';
 
 function MyForm() {
     const navigate = useNavigate();
@@ -14,24 +19,11 @@ function MyForm() {
         subtypes: [],
     });
 
+    const superTypes = useSelector((state) => state.typesFilter.superTypes);
+    const subTypes = useSelector((state) => state.typesFilter.subTypes);
+    const typesNormal = useSelector((state) => state.typesFilter.types);
+
     const dispatch = useDispatch();
-
-    // récupérer la liste des superTypes
-    useSelector(state => state.typesFilter.superTypes).map( (value) => {
-        setTypes((lastType) => ({ ...lastType, supertypes: value }));
-    } )
-
-    // récupérer la liste des subTypes
-    useSelector(state => state.typesFilter.subTypes).map( (value) => {
-        setTypes((lastType) => ({ ...lastType, subtypes: value }));
-    })
-
-    // récupérer la liste des types
-    useSelector(state => state.typesFilter.types).map( (value) => {
-        setTypes((lastType) => ({ ...lastType, types: value }));
-    })
-
-
 
     const [filters, setFilters] = useState({
         name: '',
@@ -51,50 +43,90 @@ function MyForm() {
 
     const getData = async (myUrl) => {
         const data = await fetchDataWithRetry(myUrl);
-        switch(myUrl)
-            case "https://api.magicthegathering.io/v1/types":
-                dispatch()
-                break;
-            
         const key = Object.keys(data)[0];
+        switch (myUrl) {
+            case 'https://api.magicthegathering.io/v1/types': {
+                dispatch(addTypes({ types: data[key] }));
+                break;
+            }
+            case 'https://api.magicthegathering.io/v1/subtypes': {
+                dispatch(addSubTypes({ subtypes: data[key] }));
+                break;
+            }
+            case 'https://api.magicthegathering.io/v1/supertypes': {
+                dispatch(addSuperTypes({ supertypes: data[key] }));
+                break;
+            }
+            default:
+                break;
+        }
         setTypes((lastType) => ({ ...lastType, [key]: data[key] }));
     };
 
+    // fonction pour récupérer les données de l'API, avec 5 retry en cas d'erreur
     async function fetchDataWithRetry(url, maxRetries = 5, retryDelay = 1000) {
         try {
-          const response = await axios.get(url);
-          if (response.status === 200) {
-            return response.data;
-          }
+            const response = await axios.get(url);
+            if (response.status === 200) {
+                return response.data;
+            }
         } catch (error) {
-          if (maxRetries > 0) {
-            // Wait for a short delay before retrying
-            await new Promise((resolve) => setTimeout(resolve, retryDelay));
-            // Recursively call this function with reduced maxRetries
-            return await fetchDataWithRetry(url, maxRetries - 1, retryDelay);
-          }
-          // Rethrow the error if we've exceeded the maximum number of retries
-          throw error;
+            if (maxRetries > 0) {
+                // attends retryDelay ms avant de relancer la requête
+                await new Promise((resolve) => setTimeout(resolve, retryDelay));
+                // appel recursif de la fonction avec un retry en moins
+                return await fetchDataWithRetry(
+                    url,
+                    maxRetries - 1,
+                    retryDelay
+                );
+            }
+            // si le nombre de retry est atteint, on renvoie l'erreur
+            throw error;
         }
-        // Return null if we didn't get a 200 response and maxRetries is zero
+        // retourn null si la requête n'a pas abouti
         return null;
-      }
+    }
 
     useEffect(() => {
-        if (!types.subtypes.length || !types.supertypes.length || types.types.length) {
+        if (!superTypes || !subTypes || !typesNormal) {
+            console.log('fetch');
             urls.forEach(getData);
+        } else {
+            console.log('pas fetch');
+            console.log(superTypes);
+            console.log(subTypes);
+            console.log(typesNormal);
+            // récupére la liste des types, supertypes et subtypes dans le store
+            setTypes({
+                types: typesNormal[0].types,
+                supertypes: superTypes[0].supertypes,
+                subtypes: subTypes[0].subtypes,
+            });
         }
-      }, []);
+    }, []);
 
-    let superT = types.supertypes.map((type) => {
-        return { name: type, id: 'supertypes' };
-    });
-    let t = types.types.map((type) => {
-        return { name: type, id: 'types' };
-    });
-    let subT = types.subtypes.map((type) => {
-        return { name: type, id: 'subtypes' };
-    });
+    // on crée les options pour les liste déroulantes
+    let superT = [];
+    let t = [];
+    let subT = [];
+    if (
+        types.types.length > 0 &&
+        types.supertypes.length > 0 &&
+        types.subtypes.length > 0
+    ) {
+        types.supertypes.forEach((type) => {
+            superT.push({ name: type, id: 'supertypes' });
+        });
+
+        types.types.forEach((type) => {
+            t.push({ name: type, id: 'types' });
+        });
+
+        types.subtypes.forEach((type) => {
+            subT.push({ name: type, id: 'subtypes' });
+        });
+    }
 
     let optionsColors = {
         options: [
@@ -154,11 +186,9 @@ function MyForm() {
                 }
             }
         });
-        if (url === "?") url = "" // si il n'y a pas de filtre
-        dispatch(
-            addFilter(url)
-        );
-        navigate("/Deck");
+        if (url === '?') url = ''; // si il n'y a pas de filtre
+        dispatch(addFilter(url));
+        navigate('/Deck');
     };
 
     function onSelect(selectedList, removedItem) {
@@ -222,7 +252,11 @@ function MyForm() {
         return;
     }
 
-    if (!types.subtypes.length || !types.supertypes.length || !types.types.length) {
+    if (
+        !types.subtypes.length ||
+        !types.supertypes.length ||
+        !types.types.length
+    ) {
         return (
             <div className="center">
                 <div className="wave"></div>
@@ -243,7 +277,7 @@ function MyForm() {
                 <Navbar />
                 <div>
                     <h1 className="pageTitle">Find your cards</h1>
-                    <div className='formWrapper'>
+                    <div className="formWrapper">
                         <form className="form" onSubmit={handleSubmit}>
                             <label className="label">
                                 Filter by card name:{' '}
