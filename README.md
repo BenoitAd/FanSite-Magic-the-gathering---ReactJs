@@ -7,6 +7,12 @@
 Ce projet a été réalisé dans le cadre de l'unité d'enseignement " Technologie Web côté client".
 Il a pour but de nous familiariser avec le framework React.
 
+### Notions utilisés : 
+- Router
+- Store
+- API
+- Local Storage
+- React Components & Hooks
 ## Installation 
 
 ### Importer les librairies
