@@ -12,7 +12,6 @@ function Deck(props) {
     const filters = useSelector((state) => state.filters)[0];
 
     let urlCards = `https://api.magicthegathering.io/v1/cards/${filters}`;
-    console.log(urlCards);
 
     const [deck, setDeck] = useState([]);
 
