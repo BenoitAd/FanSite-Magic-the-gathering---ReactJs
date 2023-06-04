@@ -90,13 +90,8 @@ function MyForm() {
 
     useEffect(() => {
         if (!superTypes || !subTypes || !typesNormal) {
-            console.log('fetch');
             urls.forEach(getData);
         } else {
-            console.log('pas fetch');
-            console.log(superTypes);
-            console.log(subTypes);
-            console.log(typesNormal);
             // récupére la liste des types, supertypes et subtypes dans le store
             setTypes({
                 types: typesNormal[0].types,
