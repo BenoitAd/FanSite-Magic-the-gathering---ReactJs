@@ -4,6 +4,8 @@
 
 Ce projet a été réalisé dans le cadre de l'unité d'enseignement " Technologie Web côté client".
 Il a pour but de nous familiariser avec le framework React.
+Ce projet consiste en un site Web qui permet aux utilisateurs de rechercher des cartes Magic: The Gathering en utilisant divers filtres et de créer leur propre decks Magic. 
+API utilisé : *https://docs.magicthegathering.io/*
 
 ### Notions utilisés :
 
